@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="app_name">Buyログ</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <!-- about_this_function.xml -->
+    <string name="new_log">ログを作成</string>
+    <string name="show_log">ログを参照</string>
+    <string name="new_log_about">ショッピングしたログを作成します。\r\n商品・お店情報等を入力してください。</string>
+    <string name="show_log_about">これまで記録したログを見ます。\r\nまたFacebookに投稿することもできます。</string>
+</resources>

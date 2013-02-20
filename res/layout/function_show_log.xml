@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/moveShowLog"
+    android:onClick="moveShowLog"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:focusable="true"
+    android:focusableInTouchMode="true" >
+    <Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30dip"
+        android:background="@drawable/button_stateful"
+        android:duplicateParentState="true" />
+    <TextView
+        android:id="@+id/showLog" 
+        android:text="@string/show_log"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="@color/sandybrown"
+        android:singleLine="true" />
+</LinearLayout>
