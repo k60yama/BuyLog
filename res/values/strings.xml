@@ -7,7 +7,13 @@
 
     <!-- about_this_function.xml -->
     <string name="new_log">ログを作成</string>
-    <string name="show_log">ログを参照</string>
+    <string name="show_log">ログを見る</string>
     <string name="new_log_about">ショッピングしたログを作成します。\r\n商品・お店情報等を入力してください。</string>
     <string name="show_log_about">これまで記録したログを見ます。\r\nまたFacebookに投稿することもできます。</string>
+    <string name="create_log_about">各項目をタップして、\r\n購入商品情報を入力してください。</string>
+    
+    <!-- create_log_title.xml -->
+    <string name="to_top">トップへ</string>
+    <string name="createLogTitle">ログ作成</string>
+    
 </resources>

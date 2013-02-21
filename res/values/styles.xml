@@ -1,5 +1,15 @@
-<resources>
-
-    <style name="AppTheme" parent="android:Theme.Light" />
-
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="AppTheme" parent="android:Theme.Light" >
+        <!-- ウィンドウタイトル属性 -->
+        <item name="android:windowTitleSize">50dip</item>
+        <item name="android:windowTitleBackgroundStyle">@style/CustomWindowTitleBackground</item>
+        
+        <!-- ウィンドウ属性 -->
+        <item name="android:windowBackground">@drawable/bg</item>
+    </style>
+    
+    <!-- タイトルバーの背景スタイル -->
+    <style name="CustomWindowTitleBackground">
+        <item name="android:background">@color/sandybrown</item>
+    </style>
 </resources>

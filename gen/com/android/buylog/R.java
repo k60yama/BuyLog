@@ -21,36 +21,43 @@ public final class R {
         public static final int padding_small=0x7f050000;
     }
     public static final class drawable {
-        public static final int bg=0x7f020000;
-        public static final int button_stateful=0x7f020001;
-        public static final int cursor_focused=0x7f020002;
-        public static final int cursor_off=0x7f020003;
-        public static final int cursor_pressed=0x7f020004;
-        public static final int ic_action_search=0x7f020005;
-        public static final int icon=0x7f020006;
-        public static final int shop=0x7f020007;
+        public static final int back_icon=0x7f020000;
+        public static final int bg=0x7f020001;
+        public static final int button_stateful=0x7f020002;
+        public static final int button_top=0x7f020003;
+        public static final int createlog_icon=0x7f020004;
+        public static final int cursor_focused=0x7f020005;
+        public static final int cursor_off=0x7f020006;
+        public static final int cursor_pressed=0x7f020007;
+        public static final int ic_action_search=0x7f020008;
+        public static final int icon=0x7f020009;
+        public static final int shop=0x7f02000a;
     }
     public static final class id {
         public static final int function_about=0x7f090001;
         public static final int function_name=0x7f090000;
         public static final int menu_settings=0x7f090007;
-        public static final int moveNewLog=0x7f090002;
-        public static final int moveShowLog=0x7f090004;
-        public static final int newLog=0x7f090003;
-        public static final int showLog=0x7f090005;
-        public static final int title=0x7f090006;
+        public static final int moveNewLog=0x7f090003;
+        public static final int moveShowLog=0x7f090005;
+        public static final int newLog=0x7f090004;
+        public static final int showLog=0x7f090006;
+        public static final int title=0x7f090002;
     }
     public static final class layout {
         public static final int about_this_function=0x7f030000;
-        public static final int function_new_log=0x7f030001;
-        public static final int function_show_log=0x7f030002;
-        public static final int main_menu=0x7f030003;
+        public static final int create_log=0x7f030001;
+        public static final int create_log_title=0x7f030002;
+        public static final int function_new_log=0x7f030003;
+        public static final int function_show_log=0x7f030004;
+        public static final int main_menu=0x7f030005;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
     }
     public static final class string {
         public static final int app_name=0x7f060000;
+        public static final int createLogTitle=0x7f06000a;
+        public static final int create_log_about=0x7f060008;
         public static final int hello_world=0x7f060001;
         public static final int menu_settings=0x7f060002;
         /**  about_this_function.xml 
@@ -60,8 +67,14 @@ public final class R {
         public static final int show_log=0x7f060005;
         public static final int show_log_about=0x7f060007;
         public static final int title_activity_main=0x7f060003;
+        /**  create_log_title.xml 
+         */
+        public static final int to_top=0x7f060009;
     }
     public static final class style {
         public static final int AppTheme=0x7f070000;
+        /**  タイトルバーの背景スタイル 
+         */
+        public static final int CustomWindowTitleBackground=0x7f070001;
     }
 }

@@ -2,6 +2,7 @@ package com.android.buylog;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.view.View;
 import android.view.Window;
@@ -9,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements View.OnFocusChangeListener{
+public class MainMenuActivity extends Activity implements View.OnFocusChangeListener{
 
 	TextView functionName;
 	TextView functionAbout;
@@ -42,11 +43,16 @@ public class MainActivity extends Activity implements View.OnFocusChangeListener
     }
 
     public void moveNewLog(View view){
-    		Toast.makeText(MainActivity.this, "次のアクティビティへ：moveNewLog", Toast.LENGTH_SHORT).show();
+    	//Toast.makeText(MainMenuActivity.this, "次のアクティビティへ：moveNewLog", Toast.LENGTH_SHORT).show();
+    	//Intentインスタンス生成
+    	Intent intent = new Intent(this, CreateLogActivity.class);
+    	
+    	//アクティビティ起動
+    	this.startActivity(intent);
     }
     
     public void moveShowLog(View view){
-     		Toast.makeText(MainActivity.this, "次のアクティビティへ：moveShowLog", Toast.LENGTH_SHORT).show();
+     	Toast.makeText(MainMenuActivity.this, "次のアクティビティへ：moveShowLog", Toast.LENGTH_SHORT).show();
     }
 
 	@Override
