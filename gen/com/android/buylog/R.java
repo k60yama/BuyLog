@@ -21,17 +21,27 @@ public final class R {
         public static final int padding_small=0x7f050000;
     }
     public static final class drawable {
-        public static final int back_icon=0x7f020000;
-        public static final int bg=0x7f020001;
-        public static final int button_stateful=0x7f020002;
-        public static final int button_top=0x7f020003;
-        public static final int createlog_icon=0x7f020004;
-        public static final int cursor_focused=0x7f020005;
-        public static final int cursor_off=0x7f020006;
-        public static final int cursor_pressed=0x7f020007;
-        public static final int ic_action_search=0x7f020008;
-        public static final int icon=0x7f020009;
-        public static final int shop=0x7f02000a;
+        public static final int bg=0x7f020000;
+        public static final int createlog_back=0x7f020001;
+        public static final int createlog_back_pressed=0x7f020002;
+        public static final int createlog_back_stateful=0x7f020003;
+        public static final int createlog_bg_stateful=0x7f020004;
+        public static final int createlog_close=0x7f020005;
+        public static final int createlog_close_pressed=0x7f020006;
+        public static final int createlog_close_stateful=0x7f020007;
+        public static final int createlog_pencil=0x7f020008;
+        public static final int createlog_pencil_off=0x7f020009;
+        public static final int createlog_pencil_on=0x7f02000a;
+        public static final int createlog_question=0x7f02000b;
+        public static final int createlog_question_pressed=0x7f02000c;
+        public static final int createlog_question_stateful=0x7f02000d;
+        public static final int cursor_focused=0x7f02000e;
+        public static final int cursor_off=0x7f02000f;
+        public static final int cursor_pressed=0x7f020010;
+        public static final int ic_action_search=0x7f020011;
+        public static final int icon=0x7f020012;
+        public static final int mainmenu_stateful=0x7f020013;
+        public static final int shop=0x7f020014;
     }
     public static final class id {
         public static final int function_about=0x7f090001;
@@ -44,12 +54,13 @@ public final class R {
         public static final int title=0x7f090002;
     }
     public static final class layout {
-        public static final int about_this_function=0x7f030000;
-        public static final int create_log=0x7f030001;
-        public static final int create_log_title=0x7f030002;
-        public static final int function_new_log=0x7f030003;
-        public static final int function_show_log=0x7f030004;
-        public static final int main_menu=0x7f030005;
+        public static final int about_this_createlog=0x7f030000;
+        public static final int about_this_function=0x7f030001;
+        public static final int create_log=0x7f030002;
+        public static final int create_log_title=0x7f030003;
+        public static final int function_new_log=0x7f030004;
+        public static final int function_show_log=0x7f030005;
+        public static final int main_menu=0x7f030006;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;

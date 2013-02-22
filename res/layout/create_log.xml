@@ -8,10 +8,22 @@
     <ScrollView 
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="0dip" >
-        
+        android:layout_height="0dip">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <ImageView 
+                android:src="@drawable/createlog_pencil_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView 
+                android:src="@drawable/createlog_pencil_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </ScrollView>
     
     <!-- フッター -->
-    <include layout="@layout/about_this_function"/>
+    <include layout="@layout/about_this_createlog"/>
 </LinearLayout>
