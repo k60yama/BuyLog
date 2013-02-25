@@ -21,8 +21,8 @@
             </intent-filter>
         </activity>
         <activity 
-            android:name=".CreateLogActivity"/>
-            
+            android:name=".CreateLogActivity"
+            android:configChanges="orientation" />
     </application>
 
 </manifest>

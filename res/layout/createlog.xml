@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <!-- 入力画面 -->
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dip"
+        android:background="@color/textbg">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <!-- 商品名 -->
+            <include 
+                layout="@layout/createlog_item_title"
+                android:id="@+id/itemTitle" />
+            <include layout="@layout/createlog_line" />
+                       	
+            <!-- 値段 -->
+            <include 
+                layout="@layout/createlog_price_title"
+                android:id="@+id/priceTitle"/>
+           	<include layout="@layout/createlog_line" />
+           	
+           	<!-- ショップ情報 -->
+           	<include 
+                layout="@layout/createlog_store_title"
+                android:id="@+id/storeTitle"/>
+			<include layout="@layout/createlog_line" />
+			
+			<!-- 画像 -->
+			<include 
+                layout="@layout/createlog_picture_title"
+                android:id="@+id/pictureTitle"/>
+            <include layout="@layout/createlog_line" />
+        </LinearLayout>
+    </ScrollView>
+    
+    <!-- フッター -->
+    <include layout="@layout/about_this_createlog"/>
+</LinearLayout>
