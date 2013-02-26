@@ -46,18 +46,22 @@ public final class R {
         public static final int shop=0x7f020015;
     }
     public static final class id {
+        public static final int createlog_info=0x7f090008;
         public static final int function_about=0x7f090001;
         public static final int function_name=0x7f090000;
+        public static final int itemName=0x7f090003;
+        public static final int itemPrice=0x7f090005;
         public static final int itemTitle=0x7f090002;
-        public static final int menu_settings=0x7f09000b;
-        public static final int moveNewLog=0x7f090007;
-        public static final int moveShowLog=0x7f090009;
-        public static final int newLog=0x7f090008;
-        public static final int pictureTitle=0x7f090005;
-        public static final int priceTitle=0x7f090003;
-        public static final int showLog=0x7f09000a;
-        public static final int storeTitle=0x7f090004;
-        public static final int title=0x7f090006;
+        public static final int menu_settings=0x7f09000f;
+        public static final int moveNewLog=0x7f09000b;
+        public static final int moveShowLog=0x7f09000d;
+        public static final int newLog=0x7f09000c;
+        public static final int pictureTitle=0x7f090007;
+        public static final int priceTitle=0x7f090004;
+        public static final int question=0x7f09000a;
+        public static final int showLog=0x7f09000e;
+        public static final int storeTitle=0x7f090006;
+        public static final int title=0x7f090009;
     }
     public static final class layout {
         public static final int about_this_createlog=0x7f030000;
@@ -78,23 +82,25 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f060000;
-        public static final int confirm=0x7f06000f;
+        public static final int confirm=0x7f060011;
         public static final int createLogTitle=0x7f06000a;
         public static final int create_log_about=0x7f060008;
         public static final int hello_world=0x7f060001;
         /**  create_log.xml 
          */
         public static final int itemTitle=0x7f06000b;
+        public static final int itemhint=0x7f06000c;
         public static final int menu_settings=0x7f060002;
         /**  about_this_function.xml 
          */
         public static final int new_log=0x7f060004;
         public static final int new_log_about=0x7f060006;
-        public static final int pictureTitle=0x7f06000e;
-        public static final int priceTitle=0x7f06000c;
+        public static final int pictureTitle=0x7f060010;
+        public static final int priceTitle=0x7f06000d;
+        public static final int pricehint=0x7f06000e;
         public static final int show_log=0x7f060005;
         public static final int show_log_about=0x7f060007;
-        public static final int storeTitle=0x7f06000d;
+        public static final int storeTitle=0x7f06000f;
         public static final int title_activity_main=0x7f060003;
         /**  create_log_title.xml 
          */

@@ -5,11 +5,16 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class CreateLogActivity extends Activity{
 
-	private Typeface tf;
+	private Typeface tf;			//フォントファイル指定
+	private LinearLayout llInfo;	//詳細情報
+	private ImageButton question;	//クエスチョンボタン
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -22,17 +27,17 @@ public class CreateLogActivity extends Activity{
 		//レイアウト設定ファイルを指定
 		this.setContentView(R.layout.createlog);
 		
-		//レイアウトセットアップ
+		//初期設定
 		this.setUp();
 	}
 	
-	
+	//戻るアイコンを押下した場合
 	public void finishActivity(View view){
 		//アクティビティ終了
 		this.finish();
 	}
 	
-	
+	//初期設定
 	private void setUp(){
 		//タイトルセットアップ
 		this.setTitle();
@@ -56,7 +61,7 @@ public class CreateLogActivity extends Activity{
 		this.setFooter(title, about);		
 	}
 	
-	
+	//タイトル設定
 	private void setTitle(){
 		//カスタムタイトルバーを使用
 		this.getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.createlog_title);
@@ -69,7 +74,7 @@ public class CreateLogActivity extends Activity{
 		tv.setTypeface(tf);
 	}
 	
-	
+	//フッター設定
 	private void setFooter(String aboutTitle, String aboutMsg){
 		//TextViewインスタンス取得
 		TextView tv;
@@ -83,6 +88,22 @@ public class CreateLogActivity extends Activity{
 		tv.setText(aboutMsg);
 	}
 	
+	//クローズアイコンを押下した場合
+	public void onClose(View view){
+		//LinearLayoutインスタンス取得
+		llInfo = (LinearLayout)this.findViewById(R.id.createlog_info);
+		llInfo.setVisibility(View.GONE);	//非表示
+		
+		//ImageButtonインスタンス取得
+		question = (ImageButton)this.findViewById(R.id.question);
+		question.setVisibility(View.VISIBLE);	//表示
+	}
+	
+	//クエスチョンアイコンを押下した場合
+	public void onQuestion(View view){
+		question.setVisibility(View.GONE);	//非表示
+		llInfo.setVisibility(View.VISIBLE);	//表示
+	}
 	
 	//商品名を押下した場合の処理
 	private int itemTitleStatus = 0;	//展開省略フラグ
@@ -90,6 +111,14 @@ public class CreateLogActivity extends Activity{
 		//アイコン変更処理へ
 		//処理結果を格納
 		this.itemTitleStatus = this.titleIconChange((TextView)view, this.itemTitleStatus);
+		
+		//EditTextインスタンス取得
+		EditText itemName = (EditText)this.findViewById(R.id.itemName);
+		if(itemName.getVisibility() == View.VISIBLE){
+			itemName.setVisibility(View.GONE);		//非表示
+		}else{
+			itemName.setVisibility(View.VISIBLE);	//表示
+		}
 	}
 	
 	//値段を押下した場合の処理
@@ -98,6 +127,14 @@ public class CreateLogActivity extends Activity{
 		//アイコン変更処理へ
 		//処理結果を格納
 		this.priceTitleStatus = this.titleIconChange((TextView)view, this.priceTitleStatus);
+		
+		//EditTextインスタンス取得
+		EditText itemPrice = (EditText)this.findViewById(R.id.itemPrice);
+		if(itemPrice.getVisibility() == View.VISIBLE){
+			itemPrice.setVisibility(View.GONE);		//非表示
+		}else{
+			itemPrice.setVisibility(View.VISIBLE);	//表示
+		}		
 	}	
 
 	//ショップ情報を押下した場合の処理

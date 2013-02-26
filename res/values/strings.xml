@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">買い物記ログ</string>
+    <string name="app_name">買い記ログ</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
@@ -18,7 +18,9 @@
     
     <!-- create_log.xml -->
     <string name="itemTitle">商品名</string>
+    <string name="itemhint">ex.ジャケット</string>
     <string name="priceTitle">値段</string>
+    <string name="pricehint">ex.9000円</string>
     <string name="storeTitle">ショップ情報</string>
     <string name="pictureTitle">商品イメージ</string>
     <string name="confirm">保存確認</string>

@@ -14,7 +14,8 @@
         android:textColor="@android:color/white"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:drawableLeft="@drawable/createlog_pencil" />
+        android:drawableLeft="@drawable/createlog_pencil"
+        android:drawablePadding="10dip" />
     <ImageButton
         android:src="@drawable/createlog_back_stateful"
         android:layout_width="wrap_content"
@@ -28,6 +29,8 @@
         android:background="@drawable/createlog_bg_stateful"
         android:onClick="finishActivity" />
     <ImageButton
+        android:id="@+id/question"
+       	android:visibility="gone"
         android:src="@drawable/createlog_question_stateful"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,5 +40,6 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:padding="10dip"
-        android:background="@drawable/createlog_bg_stateful" />
+        android:background="@drawable/createlog_bg_stateful"
+        android:onClick="onQuestion" />
 </RelativeLayout>

@@ -18,12 +18,28 @@
             <include 
                 layout="@layout/createlog_item_title"
                 android:id="@+id/itemTitle" />
+            <EditText 
+                android:id="@+id/itemName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="10dip"
+                android:hint="@string/itemhint" />
             <include layout="@layout/createlog_line" />
                        	
             <!-- 値段 -->
             <include 
                 layout="@layout/createlog_price_title"
                 android:id="@+id/priceTitle"/>
+            <EditText 
+                android:id="@+id/itemPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="10dip"
+                android:hint="@string/pricehint" />
            	<include layout="@layout/createlog_line" />
            	
            	<!-- ショップ情報 -->
@@ -41,5 +57,7 @@
     </ScrollView>
     
     <!-- フッター -->
-    <include layout="@layout/about_this_createlog"/>
+    <include 
+        layout="@layout/about_this_createlog"
+        android:id="@+id/createlog_info" />
 </LinearLayout>
