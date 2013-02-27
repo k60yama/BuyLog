@@ -1,6 +1,7 @@
 package com.android.buylog;
 
-import android.app.Activity;
+import com.google.android.maps.MapActivity;
+
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +11,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class CreateLogActivity extends Activity{
+public class CreateLogActivity extends MapActivity{
 
 	private Typeface tf;			//フォントファイル指定
 	private LinearLayout llInfo;	//詳細情報
@@ -106,55 +107,51 @@ public class CreateLogActivity extends Activity{
 	}
 	
 	//商品名を押下した場合の処理
-	private int itemTitleStatus = 0;	//展開省略フラグ
+	private int itemTitleStatus = 0;
 	public void itemTitle(View view){		
 		//アイコン変更処理へ
-		//処理結果を格納
 		this.itemTitleStatus = this.titleIconChange((TextView)view, this.itemTitleStatus);
 		
 		//EditTextインスタンス取得
 		EditText itemName = (EditText)this.findViewById(R.id.itemName);
-		if(itemName.getVisibility() == View.VISIBLE){
-			itemName.setVisibility(View.GONE);		//非表示
-		}else{
-			itemName.setVisibility(View.VISIBLE);	//表示
-		}
+		this.isVisibility(itemName);	//表示・非表示切り替え
 	}
 	
 	//値段を押下した場合の処理
-	private int priceTitleStatus = 0;	//展開省略フラグ
+	private int priceTitleStatus = 0;
 	public void priceTitle(View view){		
 		//アイコン変更処理へ
-		//処理結果を格納
 		this.priceTitleStatus = this.titleIconChange((TextView)view, this.priceTitleStatus);
 		
-		//EditTextインスタンス取得
-		EditText itemPrice = (EditText)this.findViewById(R.id.itemPrice);
-		if(itemPrice.getVisibility() == View.VISIBLE){
-			itemPrice.setVisibility(View.GONE);		//非表示
-		}else{
-			itemPrice.setVisibility(View.VISIBLE);	//表示
-		}		
+		//LinearLayoutインスタンス取得
+		LinearLayout itemPrice = (LinearLayout)this.findViewById(R.id.itemPrice);
+		this.isVisibility(itemPrice);	//表示・非表示切り替え
 	}	
 
 	//ショップ情報を押下した場合の処理
-	private int storeTitleStatus = 0;	//展開省略フラグ
+	private int storeTitleStatus = 0;
 	public void storeTitle(View view){		
 		//アイコン変更処理へ
-		//処理結果を格納
 		this.storeTitleStatus = this.titleIconChange((TextView)view, this.storeTitleStatus);
+		
+		//LinearLayoutインスタンス取得
+		LinearLayout storeInfo = (LinearLayout)this.findViewById(R.id.storeInfo);
+		this.isVisibility(storeInfo);	//表示・非表示切り替え		
 	}	
 	
 	//商品イメージを押下した場合の処理
-	private int pictureTitleStatus = 0;	//展開省略フラグ
+	private int pictureTitleStatus = 0;
 	public void pictureTitle(View view){		
 		//アイコン変更処理へ
-		//処理結果を格納
 		this.pictureTitleStatus = this.titleIconChange((TextView)view, this.pictureTitleStatus);
+
+		//LinearLayoutインスタンス取得
+		LinearLayout pictureInfo = (LinearLayout)this.findViewById(R.id.pictureInfo);
+		this.isVisibility(pictureInfo);	//表示・非表示切り替え		
 	}
 	
 	//アイコン変更処理
-	public int titleIconChange(TextView view, int iconStatus){
+	private int titleIconChange(TextView view, int iconStatus){
 		int drawableId;		//アイコンID
 		if(iconStatus == 0){
 			//展開用アイコン設定
@@ -168,5 +165,20 @@ public class CreateLogActivity extends Activity{
 		//アイコン設定
 		view.setCompoundDrawablesWithIntrinsicBounds(drawableId, 0, 0, 0);
 		return iconStatus;
+	}
+	
+	//表示・非表示切り替え
+	private void isVisibility(View view){
+		if(view.getVisibility() == View.VISIBLE){
+			view.setVisibility(View.GONE);		//非表示
+		}else{
+			view.setVisibility(View.VISIBLE);	//表示
+		}		
+	}
+
+	@Override
+	protected boolean isRouteDisplayed() {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
 	}
 }

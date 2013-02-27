@@ -46,22 +46,29 @@ public final class R {
         public static final int shop=0x7f020015;
     }
     public static final class id {
-        public static final int createlog_info=0x7f090008;
+        public static final int address=0x7f09000e;
+        public static final int createlog_info=0x7f090007;
         public static final int function_about=0x7f090001;
         public static final int function_name=0x7f090000;
+        public static final int getPicture=0x7f09000a;
+        public static final int getStoreAddress=0x7f09000f;
+        public static final int imageView=0x7f090009;
         public static final int itemName=0x7f090003;
-        public static final int itemPrice=0x7f090005;
+        public static final int itemPrice=0x7f09000b;
         public static final int itemTitle=0x7f090002;
-        public static final int menu_settings=0x7f09000f;
-        public static final int moveNewLog=0x7f09000b;
-        public static final int moveShowLog=0x7f09000d;
-        public static final int newLog=0x7f09000c;
-        public static final int pictureTitle=0x7f090007;
+        public static final int menu_settings=0x7f090016;
+        public static final int moveNewLog=0x7f090012;
+        public static final int moveShowLog=0x7f090014;
+        public static final int newLog=0x7f090013;
+        public static final int pictureInfo=0x7f090008;
+        public static final int pictureTitle=0x7f090006;
         public static final int priceTitle=0x7f090004;
-        public static final int question=0x7f09000a;
-        public static final int showLog=0x7f09000e;
-        public static final int storeTitle=0x7f090006;
-        public static final int title=0x7f090009;
+        public static final int question=0x7f090011;
+        public static final int showLog=0x7f090015;
+        public static final int storeInfo=0x7f09000c;
+        public static final int storeName=0x7f09000d;
+        public static final int storeTitle=0x7f090005;
+        public static final int title=0x7f090010;
     }
     public static final class layout {
         public static final int about_this_createlog=0x7f030000;
@@ -69,38 +76,48 @@ public final class R {
         public static final int createlog=0x7f030002;
         public static final int createlog_item_title=0x7f030003;
         public static final int createlog_line=0x7f030004;
-        public static final int createlog_picture_title=0x7f030005;
-        public static final int createlog_price_title=0x7f030006;
-        public static final int createlog_store_title=0x7f030007;
-        public static final int createlog_title=0x7f030008;
-        public static final int function_new_log=0x7f030009;
-        public static final int function_show_log=0x7f03000a;
-        public static final int main_menu=0x7f03000b;
+        public static final int createlog_picture_input=0x7f030005;
+        public static final int createlog_picture_title=0x7f030006;
+        public static final int createlog_price_input=0x7f030007;
+        public static final int createlog_price_title=0x7f030008;
+        public static final int createlog_store_input=0x7f030009;
+        public static final int createlog_store_title=0x7f03000a;
+        public static final int createlog_title=0x7f03000b;
+        public static final int function_new_log=0x7f03000c;
+        public static final int function_show_log=0x7f03000d;
+        public static final int main_menu=0x7f03000e;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
     }
     public static final class string {
         public static final int app_name=0x7f060000;
-        public static final int confirm=0x7f060011;
+        public static final int confirm=0x7f060018;
         public static final int createLogTitle=0x7f06000a;
         public static final int create_log_about=0x7f060008;
+        public static final int getPicture=0x7f060017;
+        public static final int getStoreAddressLabel=0x7f060015;
         public static final int hello_world=0x7f060001;
+        public static final int itemHint=0x7f06000c;
         /**  create_log.xml 
          */
         public static final int itemTitle=0x7f06000b;
-        public static final int itemhint=0x7f06000c;
         public static final int menu_settings=0x7f060002;
         /**  about_this_function.xml 
          */
         public static final int new_log=0x7f060004;
         public static final int new_log_about=0x7f060006;
-        public static final int pictureTitle=0x7f060010;
+        public static final int pictureTitle=0x7f060016;
+        public static final int priceHint=0x7f06000e;
         public static final int priceTitle=0x7f06000d;
-        public static final int pricehint=0x7f06000e;
+        public static final int priceUnit=0x7f06000f;
         public static final int show_log=0x7f060005;
         public static final int show_log_about=0x7f060007;
-        public static final int storeTitle=0x7f06000f;
+        public static final int storeAddress=0x7f060013;
+        public static final int storeAddressHint=0x7f060014;
+        public static final int storeName=0x7f060011;
+        public static final int storeNameHint=0x7f060012;
+        public static final int storeTitle=0x7f060010;
         public static final int title_activity_main=0x7f060003;
         /**  create_log_title.xml 
          */

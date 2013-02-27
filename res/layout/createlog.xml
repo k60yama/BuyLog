@@ -25,33 +25,28 @@
                 android:visibility="gone"
                 android:layout_marginLeft="20dip"
                 android:layout_marginRight="10dip"
-                android:hint="@string/itemhint" />
+                android:hint="@string/itemHint" />
             <include layout="@layout/createlog_line" />
                        	
             <!-- 値段 -->
             <include 
                 layout="@layout/createlog_price_title"
                 android:id="@+id/priceTitle"/>
-            <EditText 
-                android:id="@+id/itemPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginLeft="20dip"
-                android:layout_marginRight="10dip"
-                android:hint="@string/pricehint" />
+           	<include layout="@layout/createlog_price_input"/>
            	<include layout="@layout/createlog_line" />
            	
            	<!-- ショップ情報 -->
            	<include 
                 layout="@layout/createlog_store_title"
                 android:id="@+id/storeTitle"/>
+           	<include layout="@layout/createlog_store_input" />
 			<include layout="@layout/createlog_line" />
 			
 			<!-- 画像 -->
 			<include 
                 layout="@layout/createlog_picture_title"
                 android:id="@+id/pictureTitle"/>
+			<include layout="@layout/createlog_picture_input" />
             <include layout="@layout/createlog_line" />
         </LinearLayout>
     </ScrollView>

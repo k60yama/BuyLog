@@ -18,10 +18,22 @@
     
     <!-- create_log.xml -->
     <string name="itemTitle">商品名</string>
-    <string name="itemhint">ex.ジャケット</string>
+    <string name="itemHint">ex.ジャケット</string>
+    
     <string name="priceTitle">値段</string>
-    <string name="pricehint">ex.9000円</string>
+    <string name="priceHint">ex.9000</string>
+    <string name="priceUnit">円</string>
+    
     <string name="storeTitle">ショップ情報</string>
+    <string name="storeName">ショップ名:</string>
+    <string name="storeNameHint">ex.Anドロイド</string>
+    <string name="storeAddress">住所:</string>
+    <string name="storeAddressHint">ex.福岡県福岡市</string>
+    <string name="getStoreAddressLabel">現在地から取得</string>
+    
     <string name="pictureTitle">商品イメージ</string>
-    <string name="confirm">保存確認</string>
+    <string name="getPicture">ギャラリーから取得</string>
+    
+    
+    <string name="confirm">確認する</string>
 </resources>
