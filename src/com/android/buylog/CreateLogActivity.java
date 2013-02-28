@@ -1,9 +1,11 @@
 package com.android.buylog;
 
 import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapView;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -56,6 +58,10 @@ public class CreateLogActivity extends MapActivity{
 			tv.setTypeface(tf);
 		}
 		
+		//MapViewインスタンス取得
+		MapView mv = (MapView)this.findViewById(R.id.storeMap);
+		mv.setBuiltInZoomControls(true);
+		
 		//フッター初期設定
 		String title = this.getString(R.string.createLogTitle);
 		String about = this.getString(R.string.create_log_about);
@@ -89,6 +95,7 @@ public class CreateLogActivity extends MapActivity{
 		tv.setText(aboutMsg);
 	}
 	
+	/*
 	//クローズアイコンを押下した場合
 	public void onClose(View view){
 		//LinearLayoutインスタンス取得
@@ -105,6 +112,7 @@ public class CreateLogActivity extends MapActivity{
 		question.setVisibility(View.GONE);	//非表示
 		llInfo.setVisibility(View.VISIBLE);	//表示
 	}
+	
 	
 	//商品名を押下した場合の処理
 	private int itemTitleStatus = 0;
@@ -175,10 +183,11 @@ public class CreateLogActivity extends MapActivity{
 			view.setVisibility(View.VISIBLE);	//表示
 		}		
 	}
+	*/
 
 	@Override
 	protected boolean isRouteDisplayed() {
 		// TODO 自動生成されたメソッド・スタブ
 		return false;
 	}
-}
+}	

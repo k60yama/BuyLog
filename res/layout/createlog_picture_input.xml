@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/pictureInfo"
-    android:visibility="gone"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="20dip"
     android:layout_marginRight="10dip"    
     android:orientation="vertical" >
+    <TextView
+        android:id="@+id/pictureTitle"
+    	android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+    	android:text="@string/pictureTitle"
+    	android:textSize="30sp"
+		android:paddingTop="10dip"
+		android:paddingLeft="20dip"
+		android:paddingBottom="10dip"
+		android:drawablePadding="10dip"
+		android:drawableLeft="@drawable/createlog_pencil_on" />
     <ImageView 
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -21,5 +30,5 @@
         android:textColor="@android:color/white"
         android:background="@drawable/createlog_bg_stateful"
         android:drawableLeft="@drawable/createlog_pencil_on"
-        android:padding="10dip" />    
+        android:padding="10dip" />
 </LinearLayout>

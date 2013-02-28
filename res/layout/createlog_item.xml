@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <!-- 商品名入力レイアウト -->
+        <include layout="@layout/createlog_item_input" />
+        
+        <!-- 値段入力レイアウト -->
+        <include layout="@layout/createlog_price_input" />
+        
+        <!-- 商品イメージレイアウト -->
+        <include layout="@layout/createlog_picture_input" />
+    </LinearLayout>
+</ScrollView>

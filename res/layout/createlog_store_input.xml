@@ -1,65 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/storeInfo"
-    android:visibility="gone"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_marginLeft="20dip"
     android:layout_marginRight="10dip"
+    android:layout_marginBottom="10dip"
     android:orientation="vertical" >
+    <TextView
+        android:id="@+id/storeTitle"
+    	android:layout_width="match_parent"
+   		android:layout_height="wrap_content"
+    	android:text="@string/storeTitle"
+    	android:textSize="30sp"
+		android:paddingTop="10dip"
+		android:paddingLeft="20dip"
+		android:paddingBottom="10dip"
+		android:drawablePadding="10dip"
+		android:drawableLeft="@drawable/createlog_pencil_on" />
+	<com.google.android.maps.MapView
+        android:id="@+id/storeMap"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:layout_marginTop="10dip"
+        android:clickable="true"
+        android:apiKey="0VJtTiJv-g6mV5h9QvoEmBagbZRJQTjoBdWA5tg" />
+    
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-        <TableRow>
+        android:layout_height="wrap_content">
+        <TableRow android:layout_marginTop="5dip">
             <TextView 
-                android:text="@string/storeName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:text="@string/storeName" />
             <EditText 
                 android:id="@+id/storeName"
                 android:hint="@string/storeNameHint"
-                android:layout_width="0dip"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
+                android:layout_span="2"
                 android:layout_marginLeft="5dip" />
         </TableRow>
-        <TableRow
-            android:layout_marginTop="10dip">
+        
+        <TableRow android:layout_marginTop="5dip">
             <TextView 
                 android:text="@string/storeAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical" />
             <EditText 
                 android:id="@+id/address"
                 android:hint="@string/storeAddressHint"
-                android:layout_width="0dip"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dip"
                 android:layout_marginRight="5dip"
                 android:layout_gravity="center_vertical" />
             <ImageButton
                 android:src="@drawable/createlog_close_stateful"
                 android:background="@drawable/createlog_bg_stateful"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:padding="10dip" />
         </TableRow>
+        <TableRow android:layout_marginTop="5dip">
+     		<Button 
+        		android:id="@+id/getStoreAddress"
+        		android:layout_span="3"
+        		android:text="@string/getStoreAddressLabel"
+        		android:textColor="@android:color/white"
+        		android:background="@drawable/createlog_bg_stateful"
+        		android:drawableLeft="@drawable/createlog_pencil_on"
+        		android:padding="10dip" />
+        </TableRow>
     </TableLayout>
-    <Button 
-        android:id="@+id/getStoreAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dip"
-        android:text="@string/getStoreAddressLabel"
-        android:textColor="@android:color/white"
-        android:background="@drawable/createlog_bg_stateful"
-        android:drawableLeft="@drawable/createlog_pencil_on"
-        android:padding="10dip" />
-    <com.google.android.maps.MapView 
-        android:layout_width="match_parent"
-        android:layout_height="250dip"
-        android:layout_marginTop="10dip"
-        android:apiKey="0VJtTiJv-g6mPxh841yhCErTEP_8HWrm9bR6XDg" />
 </LinearLayout>
