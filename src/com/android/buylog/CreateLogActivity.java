@@ -5,19 +5,15 @@ import com.google.android.maps.MapView;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class CreateLogActivity extends MapActivity{
 
 	private Typeface tf;			//フォントファイル指定
-	private LinearLayout llInfo;	//詳細情報
-	private ImageButton question;	//クエスチョンボタン
+	//private LinearLayout llInfo;	//詳細情報
+	//private ImageButton question;	//クエスチョンボタン
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){

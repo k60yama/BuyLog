@@ -36,4 +36,8 @@
     
     
     <string name="confirm">確認する</string>
+    
+    
+    <string name="itemTab">商品情報</string>
+    <string name="shopTab">ショップ情報</string>
 </resources>

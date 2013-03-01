@@ -12,7 +12,6 @@
     	android:text="@string/pictureTitle"
     	android:textSize="30sp"
 		android:paddingTop="10dip"
-		android:paddingLeft="20dip"
 		android:paddingBottom="10dip"
 		android:drawablePadding="10dip"
 		android:drawableLeft="@drawable/createlog_pencil_on" />

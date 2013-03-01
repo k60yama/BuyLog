@@ -26,6 +26,15 @@
         <activity 
             android:name=".CreateLogActivity"
             android:configChanges="orientation" />
+        <activity 
+            android:name=".CreateLogTabActivity"
+            android:screenOrientation="portrait" />
+        <activity 
+            android:name=".CreateLogItemActivity"
+        	android:configChanges="orientation" />
+        <activity 
+            android:name=".CreateLogStoreMapActivity"
+            android:configChanges="orientation" />
     </application>
 
 </manifest>

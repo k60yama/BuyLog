@@ -45,7 +45,7 @@ public class MainMenuActivity extends Activity implements View.OnFocusChangeList
     public void moveNewLog(View view){
     	//Toast.makeText(MainMenuActivity.this, "次のアクティビティへ：moveNewLog", Toast.LENGTH_SHORT).show();
     	//Intentインスタンス生成
-    	Intent intent = new Intent(this, CreateLogActivity.class);
+    	Intent intent = new Intent(this, CreateLogTabActivity.class);
     	
     	//アクティビティ起動
     	this.startActivity(intent);
