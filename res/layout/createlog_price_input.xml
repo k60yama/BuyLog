@@ -10,7 +10,6 @@
     	android:text="@string/priceTitle"
     	android:textSize="30sp"
 		android:paddingTop="10dip"
-		android:paddingLeft="20dip"
 		android:paddingBottom="10dip"
 		android:drawablePadding="10dip"
 		android:drawableLeft="@drawable/createlog_pencil_on"/>
@@ -22,14 +21,12 @@
 	        android:layout_width="0dip"
 	        android:layout_weight="1"
 	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="20dip"
 	        android:layout_marginRight="10dip"
 	        android:hint="@string/priceHint" />
 		<TextView 
 		    android:text="@string/priceUnit"
 		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_marginRight="10dip" />        
+		    android:layout_height="wrap_content" />
     </LinearLayout>
 	<include layout="@layout/createlog_line"/>    
 </LinearLayout>

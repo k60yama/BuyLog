@@ -5,15 +5,15 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.TabHost.TabSpec;
 
 @SuppressWarnings("deprecation")
 public class CreateLogTabActivity extends TabActivity {
-	
-	private Typeface tf;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -37,13 +37,16 @@ public class CreateLogTabActivity extends TabActivity {
 		
 		//商品情報タブ設定
 		TabSpec itemTab = tabHost.newTabSpec("tab1");
-		itemTab.setIndicator(res.getString(R.string.itemTab), res.getDrawable(R.drawable.createlog_item));
+		itemTab.setIndicator(new CustomTabContentView(
+				this, res.getString(R.string.itemTab), R.drawable.createlog_item));
 		itemTab.setContent(new Intent().setClass(this, CreateLogItemActivity.class));
 		tabHost.addTab(itemTab);
 		
 		//ショップ情報タブ設定
 		TabSpec shopTab = tabHost.newTabSpec("tab2");
-		shopTab.setIndicator(res.getString(R.string.shopTab), res.getDrawable(R.drawable.createlog_store));
+		//shopTab.setIndicator(res.getString(R.string.shopTab), res.getDrawable(R.drawable.createlog_store));
+		shopTab.setIndicator(new CustomTabContentView(
+				this, res.getString(R.string.shopTab), R.drawable.createlog_store));
 		shopTab.setContent(new Intent().setClass(this, CreateLogStoreMapActivity.class));
 		tabHost.addTab(shopTab);
 		
@@ -57,10 +60,22 @@ public class CreateLogTabActivity extends TabActivity {
 		this.getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.createlog_title);
 		
 		//フォントファイル指定
-		tf = Typeface.createFromAsset(this.getAssets(), "fonts/APJapanesefont.ttf");
+		Typeface tf = Typeface.createFromAsset(this.getAssets(), "fonts/APJapanesefont.ttf");
 		
 		//TextViewインスタンスを取得
 		TextView tv = (TextView)this.findViewById(R.id.title);
 		tv.setTypeface(tf);		
 	}
+	
+	//アクティビティ終了
+	public void finishActivity(View view){
+		this.finish();
+	}
+	
+	//保存処理
+	public void onSave(View view){
+		Toast.makeText(this, "保存処理を開始します。", Toast.LENGTH_SHORT).show();
+	}
+	
+	
 }

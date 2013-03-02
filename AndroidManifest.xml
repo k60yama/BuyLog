@@ -24,9 +24,6 @@
             </intent-filter>
         </activity>
         <activity 
-            android:name=".CreateLogActivity"
-            android:configChanges="orientation" />
-        <activity 
             android:name=".CreateLogTabActivity"
             android:screenOrientation="portrait" />
         <activity 

@@ -12,9 +12,14 @@ public final class R {
     }
     public static final class color {
         public static final int burlywood=0x7f040001;
+        public static final int lightskyblue=0x7f040006;
         public static final int peru=0x7f040000;
         public static final int sandybrown=0x7f040002;
-        public static final int textbg=0x7f040003;
+        public static final int tab_background=0x7f040007;
+        public static final int tab_textcolor=0x7f040008;
+        public static final int tabbg=0x7f040003;
+        public static final int tabnoselect=0x7f040005;
+        public static final int tabselect=0x7f040004;
     }
     public static final class dimen {
         public static final int padding_large=0x7f050002;
@@ -56,17 +61,19 @@ public final class R {
         public static final int imageView=0x7f090005;
         public static final int itemName=0x7f090003;
         public static final int itemTitle=0x7f090002;
-        public static final int menu_settings=0x7f090013;
-        public static final int moveNewLog=0x7f09000f;
-        public static final int moveShowLog=0x7f090011;
-        public static final int newLog=0x7f090010;
+        public static final int menu_settings=0x7f090015;
+        public static final int moveNewLog=0x7f090011;
+        public static final int moveShowLog=0x7f090013;
+        public static final int newLog=0x7f090012;
         public static final int pictureTitle=0x7f090004;
         public static final int priceTitle=0x7f090007;
-        public static final int question=0x7f09000e;
-        public static final int showLog=0x7f090012;
+        public static final int save=0x7f09000e;
+        public static final int showLog=0x7f090014;
         public static final int storeMap=0x7f090009;
         public static final int storeName=0x7f09000a;
         public static final int storeTitle=0x7f090008;
+        public static final int tabIcon=0x7f09000f;
+        public static final int tabTitle=0x7f090010;
         public static final int title=0x7f09000d;
     }
     public static final class layout {
@@ -80,9 +87,10 @@ public final class R {
         public static final int createlog_price_input=0x7f030007;
         public static final int createlog_store_input=0x7f030008;
         public static final int createlog_title=0x7f030009;
-        public static final int function_new_log=0x7f03000a;
-        public static final int function_show_log=0x7f03000b;
-        public static final int main_menu=0x7f03000c;
+        public static final int custom_tabwidget=0x7f03000a;
+        public static final int function_new_log=0x7f03000b;
+        public static final int function_show_log=0x7f03000c;
+        public static final int main_menu=0x7f03000d;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;

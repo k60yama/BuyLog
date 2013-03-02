@@ -9,8 +9,6 @@
         android:layout_height="wrap_content"
 	    android:text="@string/itemTitle"
 	    android:textSize="30sp"
-		android:paddingTop="10dip"
-		android:paddingLeft="20dip"
 		android:paddingBottom="10dip"
 		android:drawablePadding="10dip"
 		android:drawableLeft="@drawable/createlog_pencil_on" />
@@ -18,8 +16,6 @@
     	android:id="@+id/itemName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dip"
-        android:layout_marginRight="10dip"
         android:hint="@string/itemHint" />
 	<include layout="@layout/createlog_line"/>
 </LinearLayout>

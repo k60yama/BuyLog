@@ -29,8 +29,7 @@
         android:background="@drawable/createlog_bg_stateful"
         android:onClick="finishActivity" />
     <ImageButton
-        android:id="@+id/question"
-       	android:visibility="gone"
+        android:id="@+id/save"
         android:src="@drawable/createlog_question_stateful"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,5 +40,5 @@
         android:layout_centerVertical="true"
         android:padding="10dip"
         android:background="@drawable/createlog_bg_stateful"
-        android:onClick="onQuestion" />
+        android:onClick="onSave" />
 </RelativeLayout>
