@@ -14,9 +14,9 @@
 		android:drawablePadding="10dip"
 		android:drawableLeft="@drawable/createlog_pencil_on" />
     <ImageView 
-        android:id="@+id/imageView"
+        android:id="@+id/pictureImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dip"
         android:visibility="gone" />
     <Button 
         android:id="@+id/getPicture"
@@ -27,5 +27,6 @@
         android:textColor="@android:color/white"
         android:background="@drawable/createlog_bg_stateful"
         android:drawableLeft="@drawable/createlog_pencil_on"
-        android:padding="10dip" />
+        android:padding="10dip"
+        android:onClick="onGetPicture" />
 </LinearLayout>

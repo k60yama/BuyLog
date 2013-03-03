@@ -58,13 +58,13 @@ public final class R {
         public static final int function_name=0x7f090000;
         public static final int getPicture=0x7f090006;
         public static final int getStoreAddress=0x7f09000c;
-        public static final int imageView=0x7f090005;
         public static final int itemName=0x7f090003;
         public static final int itemTitle=0x7f090002;
         public static final int menu_settings=0x7f090015;
         public static final int moveNewLog=0x7f090011;
         public static final int moveShowLog=0x7f090013;
         public static final int newLog=0x7f090012;
+        public static final int pictureImage=0x7f090005;
         public static final int pictureTitle=0x7f090004;
         public static final int priceTitle=0x7f090007;
         public static final int save=0x7f09000e;

@@ -32,7 +32,7 @@
     <string name="getStoreAddressLabel">現在地から取得</string>
     
     <string name="pictureTitle">商品イメージ</string>
-    <string name="getPicture">ギャラリーから取得</string>
+    <string name="getPicture">画像を取り込む</string>
     
     
     <string name="confirm">確認する</string>

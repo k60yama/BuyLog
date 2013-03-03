@@ -1,5 +1,6 @@
 package com.android.buylog;
 
+import android.app.Activity;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -74,8 +75,18 @@ public class CreateLogTabActivity extends TabActivity {
 	
 	//保存処理
 	public void onSave(View view){
-		Toast.makeText(this, "保存処理を開始します。", Toast.LENGTH_SHORT).show();
+		//現在タブタグを取得
+		//String tagName = this.getTabHost().getCurrentTabTag();
+		//Toast.makeText(this, tagName, Toast.LENGTH_SHORT).show();
+		
+		//Activity取得
+		Activity activity = this.getLocalActivityManager().getActivity("tab2");
+		String status;
+		if(activity == null){
+			status = "アクティビティ起動していない";
+		}else{
+			status = "アクティビティ起動中";
+		}
+		Toast.makeText(this, status, Toast.LENGTH_SHORT).show();
 	}
-	
-	
 }
