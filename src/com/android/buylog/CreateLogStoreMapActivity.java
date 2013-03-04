@@ -1,63 +1,69 @@
 package com.android.buylog;
 
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
+
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
+import com.google.android.maps.MyLocationOverlay;
 
-import android.content.Context;
 import android.graphics.Typeface;
-import android.location.Location;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class CreateLogStoreMapActivity extends MapActivity {
-
-/*	
+	private MapView mv;
+	private MyLocationOverlay overLay;
+	private EditText address;
+	
 	@Override
 	protected void onRestart() {
-		// TODO 自動生成されたメソッド・スタブ
 		super.onRestart();
-		this.showLifeCycle(": onRestart");
 	}
 
 	@Override
 	protected void onDestroy() {
-		// TODO 自動生成されたメソッド・スタブ
 		super.onDestroy();
-		this.showLifeCycle(": onDestroy");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO 自動生成されたメソッド・スタブ
 		super.onPause();
-		this.showLifeCycle(": onPause");
 	}
 
 	@Override
 	protected void onResume() {
-		// TODO 自動生成されたメソッド・スタブ
 		super.onResume();
-		this.showLifeCycle(": onResume");
+		
+		//現在入力されている住所取得
+		String storeAddress = (this.address.getText().toString()).trim();	
+		
+		//未入力の場合、住所を自動補完する
+		if("".equals(storeAddress)){		
+			//現在地取得
+			this.getMyLocation();
+		}		
 	}
 
 	@Override
 	protected void onStart() {
-		// TODO 自動生成されたメソッド・スタブ
 		super.onStart();
-		this.showLifeCycle(": onStart");
 	}
 
 	@Override
 	protected void onStop() {
-		// TODO 自動生成されたメソッド・スタブ
 		super.onStop();
-		this.showLifeCycle(": onStop");
 	}
-*/
 
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -69,10 +75,16 @@ public class CreateLogStoreMapActivity extends MapActivity {
 		
 		//フォント設定
 		this.setFontType();
-		//this.showLifeCycle(": onCreate");
 		
-		//現在地取得
-		this.getMyLocal();
+		//MapViewの取得
+		this.mv = (MapView)this.findViewById(R.id.storeMap);
+		this.mv.setBuiltInZoomControls(true);	//ズームコントローラを有効化
+		
+		//MyLocationOverlayインスタンス生成
+		overLay = new MyLocationOverlay(this, mv);
+		
+		//EditText取得
+		this.address = (EditText)this.findViewById(R.id.address);		
 	}
 
 	private void setFontType(){
@@ -89,38 +101,79 @@ public class CreateLogStoreMapActivity extends MapActivity {
 		return false;
 	}
 	
-	private void getMyLocal(){
-		//MapViewの取得
-		MapView mv = (MapView)this.findViewById(R.id.storeMap);
+	private void getMyLocation(){
+		//GPSを使用する
+		overLay.onProviderEnabled(LocationManager.GPS_PROVIDER);
 		
-		//LocationManagerインスタンスの取得
-		LocationManager lm = (LocationManager)this.getSystemService(Context.LOCATION_SERVICE);
+		//現在地の追跡を有効化
+		overLay.enableMyLocation();
 		
-		//GPSから現在地の情報を取得
-		Location myLocate = lm.getLastKnownLocation("gps");
-		
-		//MapControllerインスタンスの取得
-		MapController mc = mv.getController();
-
-		//現在地取得チェック
-		if(myLocate != null){
-			//取得できた場合
-			//緯度の取得
-			int latitude = (int)(myLocate.getLatitude() * 1e6);
-			
-			//経度の取得
-			int longitude = (int)(myLocate.getLongitude() * 1e6);
-			
-			//GeoPointに緯度・経度を設定
-			GeoPoint GP = new GeoPoint(latitude, longitude);
-			
-			//現在地までアニメーションで移動
-			mc.animateTo(GP);
-		}else{
-			//取得できない場合
-			Toast.makeText(this, "現在地が取得できません。", Toast.LENGTH_SHORT).show();
-		}
+		//現在位置を自動追跡する
+		overLay.runOnFirstFix(new Runnable(){
+			@Override
+			public void run() {
+				GeoPoint gp = overLay.getMyLocation();		//現在位置を取得
+				getStoreAddress(gp);						//現在地から住所取得
+				MapController mc = mv.getController();		//MapControllerインスタンス取得
+				mc.setZoom(19);								//ズーム表示
+				mc.animateTo(gp);							//地図移動
+			}
+		});
+		//MapViewにMyLocationOverLayを追加
+		mv.getOverlays().add(overLay);
 	}
+	
+	private void getStoreAddress(GeoPoint gp){
+		//初期化
+		String addressTxt = "";
+		double latitude = (double)(gp.getLatitudeE6() / 1E6);		//緯度取得
+		double longitude = (double)(gp.getLongitudeE6() / 1E6);		//経度取得
+		try{
+			//Geocoderインスタンス生成
+			Geocoder coder = new Geocoder(this.getApplicationContext(), Locale.JAPAN);
+			List<Address> list_addr = coder.getFromLocation(latitude, longitude, 10);	//住所を取得
+				
+			//取得できた場合
+			if(!list_addr.isEmpty()){
+				for(int i=0; i<list_addr.size(); i++){
+					//住所を取得
+					Address addr = list_addr.get(i);
+					
+					//StringBufferインスタンス生成
+					StringBuffer sb = new StringBuffer();
+						
+					//文字列を半角カンマで結合
+					String s;
+					for(int j=0; (s = addr.getAddressLine(j)) != null; j++){
+						sb.append(s + ",");
+					}
+					addressTxt = sb.toString();		//String変換
+						
+					//住所取得チェック
+					if(!("〒".equals(addressTxt.substring(0, 1)))){
+						//ループを終了
+						break;
+					}
+				}
+					
+				//取得した住所をキューに追加する
+				Message msg = Message.obtain();
+				msg.obj = addressTxt;
+				handler.sendMessage(msg);
+			}
+		}catch(IOException e){
+			Log.e("getStoreAddressError", "住所取得でエラーが発生しました。");
+		}
+		Log.d("住所", addressTxt);
+	}
+	
+	//UIスレッドにメッセージを送信
+	private Handler handler = new Handler(){
+		@Override
+		public void handleMessage(Message msg){
+			address.setText((String)msg.obj);
+		}
+	};
 	
 	/*
 	//ライフサイクル確認用メソッド

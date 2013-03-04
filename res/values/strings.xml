@@ -25,11 +25,11 @@
     <string name="priceUnit">円</string>
     
     <string name="storeTitle">ショップ情報</string>
-    <string name="storeName">ショップ名:</string>
+    <string name="storeName">ショップ:</string>
     <string name="storeNameHint">ex.Anドロイド</string>
-    <string name="storeAddress">住所:</string>
+    <string name="storeAddress">アドレス:</string>
     <string name="storeAddressHint">ex.福岡県福岡市</string>
-    <string name="getStoreAddressLabel">現在地から取得</string>
+    <string name="getStoreAddressLabel">住所検索</string>
     
     <string name="pictureTitle">商品イメージ</string>
     <string name="getPicture">画像を取り込む</string>
