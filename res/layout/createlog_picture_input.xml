@@ -23,10 +23,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginLeft="10dip"
         android:text="@string/getPicture"
-        android:textColor="@android:color/white"
+        android:textColor="@drawable/createlog_text_stateful"
         android:background="@drawable/createlog_bg_stateful"
-        android:drawableLeft="@drawable/createlog_pencil_on"
+        android:drawableLeft="@drawable/createlog_picture_stateful"
         android:padding="10dip"
         android:onClick="onGetPicture" />
 </LinearLayout>

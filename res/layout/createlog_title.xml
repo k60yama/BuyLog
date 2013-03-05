@@ -30,7 +30,7 @@
         android:onClick="finishActivity" />
     <ImageButton
         android:id="@+id/save"
-        android:src="@drawable/createlog_question_stateful"
+        android:src="@drawable/createlog_save_stateful"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dip"

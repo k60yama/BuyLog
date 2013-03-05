@@ -39,7 +39,7 @@ public class CreateLogTabActivity extends TabActivity {
 		//商品情報タブ設定
 		TabSpec itemTab = tabHost.newTabSpec("tab1");
 		itemTab.setIndicator(new CustomTabContentView(
-				this, res.getString(R.string.itemTab), R.drawable.createlog_item));
+				this, res.getString(R.string.itemTab), R.drawable.tab_item_stateful));
 		itemTab.setContent(new Intent().setClass(this, CreateLogItemActivity.class));
 		tabHost.addTab(itemTab);
 		
@@ -47,7 +47,7 @@ public class CreateLogTabActivity extends TabActivity {
 		TabSpec shopTab = tabHost.newTabSpec("tab2");
 		//shopTab.setIndicator(res.getString(R.string.shopTab), res.getDrawable(R.drawable.createlog_store));
 		shopTab.setIndicator(new CustomTabContentView(
-				this, res.getString(R.string.shopTab), R.drawable.createlog_store));
+				this, res.getString(R.string.shopTab), R.drawable.tab_shop_stateful));
 		shopTab.setContent(new Intent().setClass(this, CreateLogStoreMapActivity.class));
 		tabHost.addTab(shopTab);
 		

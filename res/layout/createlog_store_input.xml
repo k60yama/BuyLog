@@ -65,9 +65,11 @@
     	android:layout_height="wrap_content"
     	android:layout_marginTop="5dip"
     	android:layout_marginBottom="5dip"
+    	android:layout_marginRight="10dip"
+    	android:layout_marginLeft="10dip"
         android:text="@string/getStoreAddressLabel"
-        android:textColor="@android:color/white"
+        android:textColor="@drawable/createlog_text_stateful"
         android:background="@drawable/createlog_bg_stateful"
-        android:drawableLeft="@drawable/createlog_pencil_on"
+        android:drawableLeft="@drawable/createlog_mapview_stateful"
        	android:padding="10dip" />
 </LinearLayout>
