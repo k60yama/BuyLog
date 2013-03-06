@@ -33,6 +33,7 @@
             android:text="@string/storeName" />
         <EditText 
          	android:id="@+id/storeName"
+         	android:inputType="text"
          	android:layout_width="0dip"
          	android:layout_height="wrap_content"
          	android:layout_weight="1"
@@ -51,6 +52,7 @@
             android:text="@string/storeAddress" />
         <EditText 
         	android:id="@+id/address"
+        	android:inputType="text"
             android:hint="@string/storeAddressHint"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
@@ -60,7 +62,7 @@
     </LinearLayout>    
     
 	<Button
-    	android:id="@+id/getStoreAddress"
+    	android:id="@+id/searchStore"
     	android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	android:layout_marginTop="5dip"
@@ -71,5 +73,6 @@
         android:textColor="@drawable/createlog_text_stateful"
         android:background="@drawable/createlog_bg_stateful"
         android:drawableLeft="@drawable/createlog_mapview_stateful"
+        android:onClick="onSearchStore"
        	android:padding="10dip" />
 </LinearLayout>

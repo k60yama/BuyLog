@@ -11,6 +11,7 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.MyLocationOverlay;
 
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.LocationManager;
@@ -18,6 +19,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -25,22 +27,12 @@ public class CreateLogStoreMapActivity extends MapActivity {
 	private MapView mv;
 	private MyLocationOverlay overLay;
 	private EditText address;
+	private Geocoder coder;
+	private List<Address> list_addr;
+	protected double latitude;
+	protected double longitude;
+	private PinItemizedOverlay pinOverlay;
 	
-	@Override
-	protected void onRestart() {
-		super.onRestart();
-	}
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-	}
-
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -53,16 +45,6 @@ public class CreateLogStoreMapActivity extends MapActivity {
 			//現在地取得
 			this.getMyLocation();
 		}		
-	}
-
-	@Override
-	protected void onStart() {
-		super.onStart();
-	}
-
-	@Override
-	protected void onStop() {
-		super.onStop();
 	}
 
 	@Override
@@ -81,10 +63,10 @@ public class CreateLogStoreMapActivity extends MapActivity {
 		this.mv.setBuiltInZoomControls(true);	//ズームコントローラを有効化
 		
 		//MyLocationOverlayインスタンス生成
-		overLay = new MyLocationOverlay(this, mv);
+		this.overLay = new MyLocationOverlay(this, this.mv);
 		
 		//EditText取得
-		this.address = (EditText)this.findViewById(R.id.address);		
+		this.address = (EditText)this.findViewById(R.id.address);
 	}
 
 	private void setFontType(){
@@ -103,20 +85,20 @@ public class CreateLogStoreMapActivity extends MapActivity {
 	
 	private void getMyLocation(){
 		//GPSを使用する
-		overLay.onProviderEnabled(LocationManager.GPS_PROVIDER);
+		this.overLay.onProviderEnabled(LocationManager.GPS_PROVIDER);
 		
 		//現在地の追跡を有効化
-		overLay.enableMyLocation();
+		this.overLay.enableMyLocation();
 		
 		//現在位置を自動追跡する
-		overLay.runOnFirstFix(new Runnable(){
+		this.overLay.runOnFirstFix(new Runnable(){
 			@Override
 			public void run() {
 				GeoPoint gp = overLay.getMyLocation();		//現在位置を取得
 				getStoreAddress(gp);						//現在地から住所取得
 				MapController mc = mv.getController();		//MapControllerインスタンス取得
 				mc.setZoom(19);								//ズーム表示
-				mc.animateTo(gp);							//地図移動
+				mc.animateTo(gp);							//地図表示
 			}
 		});
 		//MapViewにMyLocationOverLayを追加
@@ -126,12 +108,12 @@ public class CreateLogStoreMapActivity extends MapActivity {
 	private void getStoreAddress(GeoPoint gp){
 		//初期化
 		String addressTxt = "";
-		double latitude = (double)(gp.getLatitudeE6() / 1E6);		//緯度取得
-		double longitude = (double)(gp.getLongitudeE6() / 1E6);		//経度取得
+		latitude = (double)(gp.getLatitudeE6() / 1E6);		//緯度取得
+		longitude = (double)(gp.getLongitudeE6() / 1E6);	//経度取得
 		try{
 			//Geocoderインスタンス生成
-			Geocoder coder = new Geocoder(this.getApplicationContext(), Locale.JAPAN);
-			List<Address> list_addr = coder.getFromLocation(latitude, longitude, 10);	//住所を取得
+			this.coder = new Geocoder(this.getApplicationContext(), Locale.JAPAN);
+			this.list_addr = this.coder.getFromLocation(latitude, longitude, 10);	//住所検索結果取得
 				
 			//取得できた場合
 			if(!list_addr.isEmpty()){
@@ -159,7 +141,7 @@ public class CreateLogStoreMapActivity extends MapActivity {
 				//取得した住所をキューに追加する
 				Message msg = Message.obtain();
 				msg.obj = addressTxt;
-				handler.sendMessage(msg);
+				this.handler.sendMessage(msg);
 			}
 		}catch(IOException e){
 			Log.e("getStoreAddressError", "住所取得でエラーが発生しました。");
@@ -175,10 +157,42 @@ public class CreateLogStoreMapActivity extends MapActivity {
 		}
 	};
 	
-	/*
-	//ライフサイクル確認用メソッド
-	private void showLifeCycle(String cycleName){
-		Toast.makeText(this, "StoreMap" + cycleName, Toast.LENGTH_SHORT).show();
+	//場所検索
+	public void onSearchStore(View view){
+		//現在入力されている住所を取得
+		String storeAddress = (this.address.getText().toString()).trim();
+		
+		//ピン画像を取得
+		Drawable pin = this.getResources().getDrawable(R.drawable.pin);
+		if(pinOverlay != null){
+			pinOverlay.clearPoint();					//前回のピンをクリア
+		}else{
+			pinOverlay = new PinItemizedOverlay(pin);	//インスタンス生成
+		}
+		//MapViewにピン用のオーバーレイを追加
+		mv.getOverlays().add(pinOverlay);
+		
+		try {
+			//住所検索結果取得
+			this.list_addr = this.coder.getFromLocationName(storeAddress, 1);
+			
+			//取得できた場合
+			if(!this.list_addr.isEmpty()){
+				Address addr = this.list_addr.get(0);			//住所取得
+				latitude = (addr.getLatitude() * 1E6);		//緯度取得
+				longitude = (addr.getLongitude() * 1E6);	//経度取得
+				
+				//GeoPointインスタンス生成
+				GeoPoint gp = new GeoPoint((int)latitude, (int)longitude);
+				pinOverlay.addPoint(gp);	//ピン用のオーバーレイにピン画像を追加
+				
+				//MapControllerインスタンス生成
+				MapController mc = this.mv.getController();
+				mc.setZoom(19);		//ズーム表示
+				mc.animateTo(gp);	//地図表示
+			}
+		} catch (IOException e) {
+			Log.e("onSearchStoreError", "場所検索でエラーが発生しました。");
+		}
 	}
-	*/
 }

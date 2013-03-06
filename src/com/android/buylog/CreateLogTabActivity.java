@@ -1,7 +1,8 @@
 package com.android.buylog;
 
-import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.TabActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
@@ -10,7 +11,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.TabHost.TabSpec;
 
 @SuppressWarnings("deprecation")
@@ -37,14 +37,14 @@ public class CreateLogTabActivity extends TabActivity {
 		TabHost tabHost = this.getTabHost();
 		
 		//商品情報タブ設定
-		TabSpec itemTab = tabHost.newTabSpec("tab1");
+		TabSpec itemTab = tabHost.newTabSpec("item");
 		itemTab.setIndicator(new CustomTabContentView(
 				this, res.getString(R.string.itemTab), R.drawable.tab_item_stateful));
 		itemTab.setContent(new Intent().setClass(this, CreateLogItemActivity.class));
 		tabHost.addTab(itemTab);
 		
 		//ショップ情報タブ設定
-		TabSpec shopTab = tabHost.newTabSpec("tab2");
+		TabSpec shopTab = tabHost.newTabSpec("shop");
 		//shopTab.setIndicator(res.getString(R.string.shopTab), res.getDrawable(R.drawable.createlog_store));
 		shopTab.setIndicator(new CustomTabContentView(
 				this, res.getString(R.string.shopTab), R.drawable.tab_shop_stateful));
@@ -75,18 +75,30 @@ public class CreateLogTabActivity extends TabActivity {
 	
 	//保存処理
 	public void onSave(View view){
-		//現在タブタグを取得
-		//String tagName = this.getTabHost().getCurrentTabTag();
-		//Toast.makeText(this, tagName, Toast.LENGTH_SHORT).show();
+		//アクティビティ起動確認
+		CreateLogStoreMapActivity storeActivity = 
+				(CreateLogStoreMapActivity)this.getLocalActivityManager().getActivity("shop");	//CreateLogStoreMapActivityを取得
 		
-		//Activity取得
-		Activity activity = this.getLocalActivityManager().getActivity("tab2");
-		String status;
-		if(activity == null){
-			status = "アクティビティ起動していない";
+		if(storeActivity == null){
+			this.showMessage("確認", "ショップ情報を入力してください。");
 		}else{
-			status = "アクティビティ起動中";
+			this.showMessage("緯度", String.valueOf(storeActivity.latitude));
 		}
-		Toast.makeText(this, status, Toast.LENGTH_SHORT).show();
+	}
+		
+	//メッセージ表示
+	private void showMessage(String title, String msg){
+		//ダイアログ生成
+		AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+		dialog.setTitle(title);
+		dialog.setMessage(msg);
+		dialog.setIcon(android.R.drawable.ic_menu_info_details);
+		dialog.setPositiveButton("閉じる", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				//何もしない
+			}
+		});
+		dialog.show();		//ダイアログ表示
 	}
 }

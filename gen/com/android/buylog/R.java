@@ -57,20 +57,20 @@ public final class R {
         public static final int ic_action_search=0x7f02001b;
         public static final int icon=0x7f02001c;
         public static final int mainmenu_stateful=0x7f02001d;
-        public static final int shop=0x7f02001e;
-        public static final int tab_item=0x7f02001f;
-        public static final int tab_item_pressed=0x7f020020;
-        public static final int tab_item_stateful=0x7f020021;
-        public static final int tab_shop=0x7f020022;
-        public static final int tab_shop_pressed=0x7f020023;
-        public static final int tab_shop_stateful=0x7f020024;
+        public static final int pin=0x7f02001e;
+        public static final int shop=0x7f02001f;
+        public static final int tab_item=0x7f020020;
+        public static final int tab_item_pressed=0x7f020021;
+        public static final int tab_item_stateful=0x7f020022;
+        public static final int tab_shop=0x7f020023;
+        public static final int tab_shop_pressed=0x7f020024;
+        public static final int tab_shop_stateful=0x7f020025;
     }
     public static final class id {
         public static final int address=0x7f09000b;
         public static final int function_about=0x7f090001;
         public static final int function_name=0x7f090000;
         public static final int getPicture=0x7f090006;
-        public static final int getStoreAddress=0x7f09000c;
         public static final int itemName=0x7f090003;
         public static final int itemTitle=0x7f090002;
         public static final int menu_settings=0x7f090015;
@@ -81,6 +81,7 @@ public final class R {
         public static final int pictureTitle=0x7f090004;
         public static final int priceTitle=0x7f090007;
         public static final int save=0x7f09000e;
+        public static final int searchStore=0x7f09000c;
         public static final int showLog=0x7f090014;
         public static final int storeMap=0x7f090009;
         public static final int storeName=0x7f09000a;
