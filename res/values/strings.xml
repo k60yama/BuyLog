@@ -29,7 +29,7 @@
     <string name="storeNameHint">ex.Anドロイド</string>
     <string name="storeAddress">アドレス:</string>
     <string name="storeAddressHint">ex.福岡県福岡市</string>
-    <string name="getStoreAddressLabel">アドレスから検索</string>
+    <string name="searchStoreLabel">ピンを地図上に表示</string>
     
     <string name="pictureTitle">商品イメージ</string>
     <string name="getPicture">画像を取り込む</string>

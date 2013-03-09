@@ -1,20 +1,26 @@
 package com.android.buylog;
 
-import android.app.AlertDialog;
 import android.app.TabActivity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.TabHost.TabSpec;
 
 @SuppressWarnings("deprecation")
 public class CreateLogTabActivity extends TabActivity {
+	
+	private ValuesCheck chk;
+	private ShowMessage sMsg;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -29,6 +35,10 @@ public class CreateLogTabActivity extends TabActivity {
 		
 		//タイトルバー設定
 		this.setTitle();
+		
+		//ValuesChkインスタンス生成
+		this.chk = new ValuesCheck();
+		this.sMsg = new ShowMessage(this);
 		
 		//リソースを取得
 		Resources res = this.getResources();
@@ -45,7 +55,6 @@ public class CreateLogTabActivity extends TabActivity {
 		
 		//ショップ情報タブ設定
 		TabSpec shopTab = tabHost.newTabSpec("shop");
-		//shopTab.setIndicator(res.getString(R.string.shopTab), res.getDrawable(R.drawable.createlog_store));
 		shopTab.setIndicator(new CustomTabContentView(
 				this, res.getString(R.string.shopTab), R.drawable.tab_shop_stateful));
 		shopTab.setContent(new Intent().setClass(this, CreateLogStoreMapActivity.class));
@@ -75,30 +84,82 @@ public class CreateLogTabActivity extends TabActivity {
 	
 	//保存処理
 	public void onSave(View view){
-		//アクティビティ起動確認
+		//CreateLogStoreMapActivityインスタンスを取得
+		//アクティビティが存在していない場合は強制終了
 		CreateLogStoreMapActivity storeActivity = 
-				(CreateLogStoreMapActivity)this.getLocalActivityManager().getActivity("shop");	//CreateLogStoreMapActivityを取得
-		
-		if(storeActivity == null){
-			this.showMessage("確認", "ショップ情報を入力してください。");
-		}else{
-			this.showMessage("緯度", String.valueOf(storeActivity.latitude));
+				(CreateLogStoreMapActivity)this.getLocalActivityManager().getActivity("shop");
+		if(!this.chk.storeActivityChk(storeActivity)){
+			this.sMsg.showToastMsg("ショップ情報を入力してください。");
+			return ;
 		}
-	}
 		
-	//メッセージ表示
-	private void showMessage(String title, String msg){
-		//ダイアログ生成
-		AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-		dialog.setTitle(title);
-		dialog.setMessage(msg);
-		dialog.setIcon(android.R.drawable.ic_menu_info_details);
-		dialog.setPositiveButton("閉じる", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				//何もしない
-			}
-		});
-		dialog.show();		//ダイアログ表示
+		//ショップ名を取得
+		//ショップ名が未入力の場合は強制終了
+		EditText sName = (EditText)storeActivity.findViewById(R.id.storeName);
+		if(!this.chk.inputItemChk(sName)){
+			this.sMsg.showToastMsg("ショップ名を入力してください。");
+			return ;
+		}else{
+			String sNameStr = sName.getText().toString();
+		}
+		
+		//アドレスを取得
+		//アドレスが未入力の場合は強制終了
+		EditText sAddr = (EditText)storeActivity.findViewById(R.id.address);
+		if(!this.chk.inputItemChk(sAddr)){
+			this.sMsg.showToastMsg("ショップのアドレスを入力してください。");
+			return ;
+		}else{
+			String sAddrStr = sAddr.getText().toString();
+		}
+		
+		//CreateLogItemActivityインスタンスを取得
+		CreateLogItemActivity itemActivity = 
+				(CreateLogItemActivity)this.getLocalActivityManager().getActivity("item");
+		
+		//商品名を取得
+		//商品名が未入力の場合は強制終了
+		EditText iName = (EditText)itemActivity.findViewById(R.id.itemName);
+		if(!this.chk.inputItemChk(iName)){
+			this.sMsg.showToastMsg("商品名を入力してください。");
+			return ;
+		}else{
+			String iNameStr = iName.getText().toString();
+		}
+		
+		//値段を取得
+		//値段が未入力の場合は強制終了
+		EditText iPrice = (EditText)itemActivity.findViewById(R.id.itemPrice);
+		if(!this.chk.inputItemChk(iPrice)){
+			this.sMsg.showToastMsg("商品の値段を入力してください。");
+			return ;
+		}else{
+			String iPriceStr = iPrice.getText().toString();
+		}
+		
+		//画像を取得
+		ImageView iImage = (ImageView)itemActivity.findViewById(R.id.pictureImage);
+		BitmapDrawable itemBitmapDraw = (BitmapDrawable)iImage.getDrawable();	//BitmapDrawableキャストして画像を取得
+		Bitmap itemBitmap = itemBitmapDraw.getBitmap();							//ビットマップファイルを取り出す
+		
+		//ConfirmMapActivityインスタンス生成;
+		ConfirmMapActivity cm = new ConfirmMapActivity(this);
+		
+		//LayoutInflaterインスタンスを生成
+		LayoutInflater inflater = getLayoutInflater();
+		View v = inflater.inflate(R.layout.createlog_confirm_dialog, null);
+		cm.showConfirmDialog(v);
+		
+		
+		/*ここからテスト
+		ImageView iv = new ImageView(this);
+		iv.setImageBitmap(itemBitmap);
+			
+		Toast toast = new Toast(this);
+		toast.setView(iv);
+		toast.setGravity(Gravity.CENTER, 0, 0);
+		toast.setDuration(Toast.LENGTH_LONG);
+		toast.show();*/
+		//ここまでテスト
 	}
 }

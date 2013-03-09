@@ -104,7 +104,6 @@ public class CreateLogItemActivity extends Activity {
 				//ImageViewインスタンス取得
 				ImageView itemPicture = (ImageView)this.findViewById(R.id.pictureImage);
 				itemPicture.setImageBitmap(img);
-				itemPicture.setVisibility(View.VISIBLE);
 			}catch(Exception e){
 			}
 		}

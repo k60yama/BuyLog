@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 public class MainMenuActivity extends Activity implements View.OnFocusChangeListener{
 
-	TextView functionName;
-	TextView functionAbout;
+	private TextView functionName;
+	private TextView functionAbout;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,8 +30,8 @@ public class MainMenuActivity extends Activity implements View.OnFocusChangeList
         this.setFontType();
         
         //フッターに表示するTextViewを取得
-        functionName = (TextView)this.findViewById(R.id.function_name);
-        functionAbout = (TextView)this.findViewById(R.id.function_about);
+        this.functionName = (TextView)this.findViewById(R.id.function_name);
+        this.functionAbout = (TextView)this.findViewById(R.id.function_about);
         
         //LinearLayoutを取得し、フォーカスイベントを設定
         LinearLayout ll1 = (LinearLayout)this.findViewById(R.id.moveNewLog);
@@ -43,12 +43,9 @@ public class MainMenuActivity extends Activity implements View.OnFocusChangeList
     }
 
     public void moveNewLog(View view){
-    	//Toast.makeText(MainMenuActivity.this, "次のアクティビティへ：moveNewLog", Toast.LENGTH_SHORT).show();
     	//Intentインスタンス生成
     	Intent intent = new Intent(this, CreateLogTabActivity.class);
-    	
-    	//アクティビティ起動
-    	this.startActivity(intent);
+    	this.startActivity(intent);		//アクティビティ起動
     }
     
     public void moveShowLog(View view){
@@ -61,12 +58,12 @@ public class MainMenuActivity extends Activity implements View.OnFocusChangeList
 		if(hasFocus){
 			switch(v.getId()){
 			case R.id.moveNewLog:
-				functionName.setText(R.string.new_log);
-				functionAbout.setText(R.string.new_log_about);
+				this.functionName.setText(R.string.new_log);
+				this.functionAbout.setText(R.string.new_log_about);
 				break;
 			case R.id.moveShowLog:
-				functionName.setText(R.string.show_log);
-				functionAbout.setText(R.string.show_log_about);
+				this.functionName.setText(R.string.show_log);
+				this.functionAbout.setText(R.string.show_log_about);
 				break;
 			}
 		}
@@ -74,7 +71,6 @@ public class MainMenuActivity extends Activity implements View.OnFocusChangeList
 	
 	private void setFontType(){
 		Typeface tf = Typeface.createFromAsset(this.getAssets(), "fonts/APJapanesefont.ttf");
-		
 		TextView tv;
 		
 		//タイトル

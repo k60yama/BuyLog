@@ -26,17 +26,17 @@ import android.widget.TextView;
 public class CreateLogStoreMapActivity extends MapActivity {
 	private MapView mv;
 	private MyLocationOverlay overLay;
-	private EditText address;
-	protected double latitude;
-	protected double longitude;
+	private EditText sAddress;
+	private double latitude;
+	private double longitude;
 	private PinItemizedOverlay pinOverlay;
+	private ShowMessage sMsg;
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
 		//現在入力されている住所取得
-		String storeAddress = (this.address.getText().toString()).trim();	
+		String storeAddress = (this.sAddress.getText().toString()).trim();	
 		
 		//未入力の場合、住所を自動補完する
 		if("".equals(storeAddress)){		
@@ -56,7 +56,10 @@ public class CreateLogStoreMapActivity extends MapActivity {
 		//フォント設定
 		this.setFontType();
 		
-		//MapViewの取得
+		//ShowMessageインスタンスの取得
+		this.sMsg = new ShowMessage(this);
+		
+		//MapViewインスタンスの取得
 		this.mv = (MapView)this.findViewById(R.id.storeMap);
 		this.mv.setBuiltInZoomControls(true);	//ズームコントローラを有効化
 		
@@ -64,7 +67,7 @@ public class CreateLogStoreMapActivity extends MapActivity {
 		this.overLay = new MyLocationOverlay(this, this.mv);
 		
 		//EditText取得
-		this.address = (EditText)this.findViewById(R.id.address);
+		this.sAddress = (EditText)this.findViewById(R.id.address);
 	}
 
 	private void setFontType(){
@@ -128,14 +131,12 @@ public class CreateLogStoreMapActivity extends MapActivity {
 						sb.append(s + ",");
 					}
 					addressTxt = sb.toString();		//String変換
-						
 					//住所取得チェック
 					if(!("〒".equals(addressTxt.substring(0, 1)))){
 						//ループを終了
 						break;
 					}
 				}
-					
 				//取得した住所をキューに追加する
 				Message msg = Message.obtain();
 				msg.obj = addressTxt;
@@ -151,49 +152,53 @@ public class CreateLogStoreMapActivity extends MapActivity {
 	private Handler handler = new Handler(){	
 		@Override
 		public void handleMessage(Message msg){
-			address.setText((String)msg.obj);
+			sAddress.setText((String)msg.obj);
 		}
 	};
 	
 	//場所検索
 	public void onSearchStore(View view){
 		//現在入力されている住所を取得
-		String storeAddress = (this.address.getText().toString()).trim();
-		
-		//ピン画像を取得
-		Drawable pin = this.getResources().getDrawable(R.drawable.createlog_pin);
-		if(pinOverlay != null){
-			pinOverlay.clearPoint();					//前回のピンをクリア
+		String storeAddress = (this.sAddress.getText().toString()).trim();
+		if("".equals(storeAddress)){
+			//未入力の場合は処理をしない
+			this.sMsg.showToastMsg("アドレスを入力して下さい。");
 		}else{
-			pinOverlay = new PinItemizedOverlay(pin);	//インスタンス生成
-		}
-		//MapViewにピン用のオーバーレイを追加
-		mv.getOverlays().add(pinOverlay);
-		
-		//Geocoderインスタンス生成
-		Geocoder coder = new Geocoder(this.getApplicationContext(), Locale.JAPAN);
-		
-		try {
-			List<Address> list_addr = coder.getFromLocationName(storeAddress, 1);	//住所検索結果取得
-			
-			//取得できた場合
-			if(!list_addr.isEmpty()){
-				Address addr = list_addr.get(0);			//住所取得
-				latitude = (addr.getLatitude() * 1E6);		//緯度取得
-				longitude = (addr.getLongitude() * 1E6);	//経度取得
-				
-				//GeoPointインスタンス生成
-				GeoPoint gp = new GeoPoint((int)latitude, (int)longitude);
-				pinOverlay.addPoint(gp);	//ピン用のオーバーレイにピン画像を追加
-				
-				//MapControllerインスタンス生成
-				MapController mc = this.mv.getController();
-				mc.setZoom(19);		//ズーム表示
-				mc.animateTo(gp);	//地図表示
+			//ピン画像を取得
+			Drawable pin = this.getResources().getDrawable(R.drawable.createlog_pin);
+			if(pinOverlay != null){
+				pinOverlay.clearPoint();					//前回のピンをクリア
+			}else{
+				pinOverlay = new PinItemizedOverlay(pin);	//インスタンス生成
 			}
-		} catch (IOException e) {
-			Log.e("onSearchStoreError", "場所検索でエラーが発生しました。");
-			e.printStackTrace();
+			//MapViewにピン用のオーバーレイを追加
+			mv.getOverlays().add(pinOverlay);
+			
+			//Geocoderインスタンス生成
+			Geocoder coder = new Geocoder(this.getApplicationContext(), Locale.JAPAN);
+			
+			try {
+				List<Address> list_addr = coder.getFromLocationName(storeAddress, 1);	//住所検索結果取得
+				
+				//取得できた場合
+				if(!list_addr.isEmpty()){
+					Address addr = list_addr.get(0);			//住所取得
+					latitude = (addr.getLatitude() * 1E6);		//緯度取得
+					longitude = (addr.getLongitude() * 1E6);	//経度取得
+					
+					//GeoPointインスタンス生成
+					GeoPoint gp = new GeoPoint((int)latitude, (int)longitude);
+					pinOverlay.addPoint(gp);	//ピン用のオーバーレイにピン画像を追加
+					
+					//MapControllerインスタンス生成
+					MapController mc = this.mv.getController();
+					mc.setZoom(19);		//ズーム表示
+					mc.animateTo(gp);	//地図表示
+				}
+			} catch (IOException e) {
+				Log.e("onSearchStoreError", "場所検索でエラーが発生しました。");
+				e.printStackTrace();
+			}
 		}
 	}
 }

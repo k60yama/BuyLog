@@ -17,7 +17,8 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
-		<EditText 
+		<EditText
+		    android:id="@+id/itemPrice" 
 	        android:layout_width="0dip"
 	        android:layout_weight="1"
 	        android:layout_height="wrap_content"
