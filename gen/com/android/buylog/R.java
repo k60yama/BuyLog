@@ -41,11 +41,11 @@ public final class R {
         public static final int createlog_mapview_pressed=0x7f02000b;
         public static final int createlog_mapview_stateful=0x7f02000c;
         public static final int createlog_pencil=0x7f02000d;
-        public static final int createlog_pencil_off=0x7f02000e;
-        public static final int createlog_pencil_on=0x7f02000f;
-        public static final int createlog_picture=0x7f020010;
-        public static final int createlog_picture_pressed=0x7f020011;
-        public static final int createlog_picture_stateful=0x7f020012;
+        public static final int createlog_pencil_on=0x7f02000e;
+        public static final int createlog_picture=0x7f02000f;
+        public static final int createlog_picture_pressed=0x7f020010;
+        public static final int createlog_picture_stateful=0x7f020011;
+        public static final int createlog_pin=0x7f020012;
         public static final int createlog_save=0x7f020013;
         public static final int createlog_save_pressed=0x7f020014;
         public static final int createlog_save_stateful=0x7f020015;
@@ -57,14 +57,13 @@ public final class R {
         public static final int ic_action_search=0x7f02001b;
         public static final int icon=0x7f02001c;
         public static final int mainmenu_stateful=0x7f02001d;
-        public static final int pin=0x7f02001e;
-        public static final int shop=0x7f02001f;
-        public static final int tab_item=0x7f020020;
-        public static final int tab_item_pressed=0x7f020021;
-        public static final int tab_item_stateful=0x7f020022;
-        public static final int tab_shop=0x7f020023;
-        public static final int tab_shop_pressed=0x7f020024;
-        public static final int tab_shop_stateful=0x7f020025;
+        public static final int shop=0x7f02001e;
+        public static final int tab_item=0x7f02001f;
+        public static final int tab_item_pressed=0x7f020020;
+        public static final int tab_item_stateful=0x7f020021;
+        public static final int tab_shop=0x7f020022;
+        public static final int tab_shop_pressed=0x7f020023;
+        public static final int tab_shop_stateful=0x7f020024;
     }
     public static final class id {
         public static final int address=0x7f09000b;

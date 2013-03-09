@@ -27,8 +27,6 @@ public class CreateLogStoreMapActivity extends MapActivity {
 	private MapView mv;
 	private MyLocationOverlay overLay;
 	private EditText address;
-	private Geocoder coder;
-	private List<Address> list_addr;
 	protected double latitude;
 	protected double longitude;
 	private PinItemizedOverlay pinOverlay;
@@ -112,8 +110,8 @@ public class CreateLogStoreMapActivity extends MapActivity {
 		longitude = (double)(gp.getLongitudeE6() / 1E6);	//経度取得
 		try{
 			//Geocoderインスタンス生成
-			this.coder = new Geocoder(this.getApplicationContext(), Locale.JAPAN);
-			this.list_addr = this.coder.getFromLocation(latitude, longitude, 10);	//住所検索結果取得
+			Geocoder coder = new Geocoder(this.getApplicationContext(), Locale.JAPAN);
+			List<Address> list_addr = coder.getFromLocation(latitude, longitude, 10);	//住所検索結果取得
 				
 			//取得できた場合
 			if(!list_addr.isEmpty()){
@@ -150,7 +148,7 @@ public class CreateLogStoreMapActivity extends MapActivity {
 	}
 	
 	//UIスレッドにメッセージを送信
-	private Handler handler = new Handler(){
+	private Handler handler = new Handler(){	
 		@Override
 		public void handleMessage(Message msg){
 			address.setText((String)msg.obj);
@@ -163,7 +161,7 @@ public class CreateLogStoreMapActivity extends MapActivity {
 		String storeAddress = (this.address.getText().toString()).trim();
 		
 		//ピン画像を取得
-		Drawable pin = this.getResources().getDrawable(R.drawable.pin);
+		Drawable pin = this.getResources().getDrawable(R.drawable.createlog_pin);
 		if(pinOverlay != null){
 			pinOverlay.clearPoint();					//前回のピンをクリア
 		}else{
@@ -172,13 +170,15 @@ public class CreateLogStoreMapActivity extends MapActivity {
 		//MapViewにピン用のオーバーレイを追加
 		mv.getOverlays().add(pinOverlay);
 		
+		//Geocoderインスタンス生成
+		Geocoder coder = new Geocoder(this.getApplicationContext(), Locale.JAPAN);
+		
 		try {
-			//住所検索結果取得
-			this.list_addr = this.coder.getFromLocationName(storeAddress, 1);
+			List<Address> list_addr = coder.getFromLocationName(storeAddress, 1);	//住所検索結果取得
 			
 			//取得できた場合
-			if(!this.list_addr.isEmpty()){
-				Address addr = this.list_addr.get(0);			//住所取得
+			if(!list_addr.isEmpty()){
+				Address addr = list_addr.get(0);			//住所取得
 				latitude = (addr.getLatitude() * 1E6);		//緯度取得
 				longitude = (addr.getLongitude() * 1E6);	//経度取得
 				
@@ -193,6 +193,7 @@ public class CreateLogStoreMapActivity extends MapActivity {
 			}
 		} catch (IOException e) {
 			Log.e("onSearchStoreError", "場所検索でエラーが発生しました。");
+			e.printStackTrace();
 		}
 	}
 }
