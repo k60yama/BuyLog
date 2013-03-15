@@ -56,8 +56,8 @@ public final class R {
         public static final int cursor_pressed=0x7f02001a;
         public static final int ic_action_search=0x7f02001b;
         public static final int icon=0x7f02001c;
-        public static final int images=0x7f02001d;
-        public static final int mainmenu_stateful=0x7f02001e;
+        public static final int mainmenu_stateful=0x7f02001d;
+        public static final int noimage=0x7f02001e;
         public static final int shop=0x7f02001f;
         public static final int tab_item=0x7f020020;
         public static final int tab_item_pressed=0x7f020021;

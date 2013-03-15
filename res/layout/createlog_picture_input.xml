@@ -15,7 +15,7 @@
 		android:drawableLeft="@drawable/createlog_pencil_on" />
     <ImageView 
         android:id="@+id/pictureImage"
-        android:src="@drawable/images"
+        android:src="@drawable/noimage"
         android:layout_width="match_parent"
         android:layout_height="200dip" />
     <Button 
